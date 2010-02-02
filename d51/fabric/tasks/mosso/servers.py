@@ -1,5 +1,6 @@
 FABRIC_TASK_MODULE = True
 from d51.fabric.tasks.mosso.utils import detail_output, list_output, get_server_api
+import getpass
 
 def list():
     list_output(path='servers', title='Servers')
@@ -23,3 +24,14 @@ def create(name, imageId, flavorId, metadata={}, personality=[]):
 def delete(id):
     mosso = get_server_api()
     print getattr(mosso.servers, id).DELETE()
+
+def update(id, name=None, password=None):
+    params = {}
+    if password:
+        if password.lower() == 'true':
+            password = getpass.getpass("New Password: ")
+        params['adminPassword'] = password
+    if name:
+        params['name'] = name
+    print getattr(get_server_api().servers, id).PUT(**params)
+
