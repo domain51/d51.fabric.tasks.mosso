@@ -11,5 +11,5 @@ def user(user):
 def key(key):
     env.mosso_key = key
 
-from d51.fabric.tasks.mosso import flavors, images, servers
+from d51.fabric.tasks.mosso import flavors, images, ips, servers
 
