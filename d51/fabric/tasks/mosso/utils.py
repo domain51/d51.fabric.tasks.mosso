@@ -1,9 +1,10 @@
+import datetime
 from dolt.apis.mosso import MossoServers
 from fabric.api import env
 
 
 def list_output(path=None, title=None, key=None):
-    result = getattr(get_server_api(), path)()
+    result = getattr(get_server_api(), path)(cache=str(datetime.datetime.now().microsecond))
     print "%s:" % title
     for entry in result[path]:
         print " - %s (%s)" % (entry['name'], entry['id'])
