@@ -23,3 +23,8 @@ def list(id, public=False, private=False):
             for address in addresses:
                 print "    %s" % address
 
+def share(id, address):
+    raise Exception("Not yet implemented")
+
+def unshare(id, address):
+    raise Exception("Not yet implemented")
